@@ -1,5 +1,6 @@
 package com.senai.lab365.exercicio_m3s1.service;
 
+import com.senai.lab365.exercicio_m3s1.enums.CategoriaAcao;
 import com.senai.lab365.exercicio_m3s1.exceptions.ResourceNotFoundException;
 import com.senai.lab365.exercicio_m3s1.model.Action;
 import com.senai.lab365.exercicio_m3s1.repository.ActionRepository;
@@ -57,5 +58,12 @@ public class ActionServiceImpl implements ActionService {
         else {
             throw new ResourceNotFoundException("Filme com ID "+id+"não encontrado.");
         }
+    }
+
+    @Transactional
+    @Override
+    public List<Action> findByCategory(CategoriaAcao category) {
+
+        return repository.findByCategoriaAcao(category);
     }
 }
