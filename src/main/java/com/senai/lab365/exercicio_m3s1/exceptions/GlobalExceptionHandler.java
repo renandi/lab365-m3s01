@@ -21,7 +21,7 @@ public class GlobalExceptionHandler {
 
         String message = ex.getBindingResult()
                 .getAllErrors()
-                .getFirst()
+                .get(0)
                 .getDefaultMessage();
 
         ErrorResponse errorResponse = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), message);

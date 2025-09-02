@@ -1,5 +1,6 @@
 package com.senai.lab365.exercicio_m3s1.service;
 
+import com.senai.lab365.exercicio_m3s1.enums.CategoriaAcao;
 import com.senai.lab365.exercicio_m3s1.model.Action;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface ActionService {
     Action update(Long id, Action action);
 
     String deleteById (Long id);
+
+    List<Action> findByCategory(CategoriaAcao category);
 }

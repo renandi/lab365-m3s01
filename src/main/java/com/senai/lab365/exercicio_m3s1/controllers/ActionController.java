@@ -2,6 +2,7 @@ package com.senai.lab365.exercicio_m3s1.controllers;
 
 import com.senai.lab365.exercicio_m3s1.dtos.ActionRequestDto;
 import com.senai.lab365.exercicio_m3s1.dtos.ActionResponseDto;
+import com.senai.lab365.exercicio_m3s1.enums.CategoriaAcao;
 import com.senai.lab365.exercicio_m3s1.mapper.ActionMapper;
 import com.senai.lab365.exercicio_m3s1.model.Action;
 import com.senai.lab365.exercicio_m3s1.service.ActionService;
@@ -44,4 +45,17 @@ public class ActionController {
     public void delete(@PathVariable Long id) {
         service.deleteById(id);
     }
+
+    @GetMapping("/categoria")
+    public List<Action> searchByCategory (
+            @RequestParam(name="tipo") CategoriaAcao categoria
+            ) {
+        if (categoria != null) {
+            return service.findByCategory(categoria);
+        }
+        else {
+            return null;
+        }
+    }
+
 }
